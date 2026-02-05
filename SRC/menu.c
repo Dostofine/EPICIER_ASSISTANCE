@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include "colors.h"
 #include <ctype.h>
-#include "list.h"
-#include "new_day.h"
-#include "csv_GÉNÉRER.h"
 char user_choice;
 int menu(){
     printf(BLUE
@@ -36,5 +33,5 @@ int menu(){
     {
        csv_GÉNÉRER();
     }
-    
+    return 0;
 }
