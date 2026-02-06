@@ -1,12 +1,13 @@
 CC = gcc
-CFLAGS = -Iinclude -Wall
-SRC = src/main.c src/menu.c src/welcome.c
-OBJ = $(SRC:.c=.o)
+CFLAGS = -I include -Wall
+SRC = SRC/clear.c  SRC/list.c  SRC/main.c  SRC/menu.c  SRC/new_day.c  SRC/Welcome.c
+TARGET = program
 
-all: app
-
-app: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o app
+all:
+	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
 clean:
-	rm -f *.o app
+	rm -f $(TARGET)
+
+run:
+	./$(TARGET)

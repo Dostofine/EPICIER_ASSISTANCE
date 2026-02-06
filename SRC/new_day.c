@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include "colors.h"
 #include <time.h>
+#include "new_day.h"
 int hello()
 {
     time_t now;
     time(&now);
-    printf(BLUE "============== %s =================\n",ctime(now),RESET);
+    printf(BLUE "============== %s =================\n" RESET,ctime(&now));
     printf(RED "==============WELCOME!===============\n" RESET);
     printf(GREEN "hello in today list i hope you good luck \n" RESET);
     printf(GREEN "inter the prices and 0 to stop.\n" RESET);
     return 0;
 }
-int new_day(float PRICES[1000])
+int inter_new_day(float PRICES[1000])
 {
     //take the prices to the day
     int size;
@@ -19,7 +20,7 @@ int new_day(float PRICES[1000])
     for(int i=0;i<1000;i++){
         printf("enter the price %d : ",i+1);
         scanf("%f",&PRICES[i]);
-        if(PRICES == 0){
+        if(PRICES[i]==0){
             break;
         }
         size=i+1;
@@ -49,7 +50,7 @@ int new_day(float PRICES[1000])
     fprintf(f, "  \"datetime\": \"%s\",\n", datetime_str);
     fprintf(f, "  \"prices\": [");
     for (int i = 0; i < size; i++) {
-        fprintf(f, "%d", PRICES[i]);
+        fprintf(f, "%fm", PRICES[i]);
         if (i != size - 1) fprintf(f, ",");
     }
     fprintf(f, "]\n");
