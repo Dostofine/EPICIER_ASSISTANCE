@@ -1,7 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "colors.h"
 #include <time.h>
 #include "new_day.h"
+#include <sys/types.h> 
+#include <errno.h>
+#include "menu.h"
+#include "clear.h"
 int hello()
 {
     time_t now;
@@ -30,15 +35,15 @@ int inter_new_day(float PRICES[1000])
     struct tm *t = localtime(&now);
 
     // Create filename: data_YYYY-MM-DD_HH-MM-SS.json
-    char filename[256];
+    char filename[500];
     snprintf(filename, sizeof(filename), 
-            "EPICIER_ASSISTANCE/data/data_%04d-%02d-%02d_%02d-%02d-%02d.json",
+            "data/data_%04d-%02d-%02d_%02d-%02d-%02d.json",
             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
             t->tm_hour, t->tm_min, t->tm_sec);
 
     FILE *f = fopen(filename, "w");
     if (f == NULL) {
-        printf("File error\n");
+        perror("Error opening file");
         return 1;
     }
 
@@ -50,7 +55,7 @@ int inter_new_day(float PRICES[1000])
     fprintf(f, "  \"datetime\": \"%s\",\n", datetime_str);
     fprintf(f, "  \"prices\": [");
     for (int i = 0; i < size; i++) {
-        fprintf(f, "%fm", PRICES[i]);
+        fprintf(f, "%f", PRICES[i]);
         if (i != size - 1) fprintf(f, ",");
     }
     fprintf(f, "]\n");
@@ -58,5 +63,7 @@ int inter_new_day(float PRICES[1000])
     fclose(f);
 
     printf("File created: %s\n", filename);
+    clear_cmd();
+    menu();
     return 0;
 }

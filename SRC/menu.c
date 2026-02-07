@@ -9,21 +9,21 @@
 int menu(){
     char user_choice;
     printf(BLUE
-        "──────────────────────────────────────────────────────────"
+        "──────────────────────────────────────────────────────────\n"
+        "\n            [ COMMANDES DISPONIBLES ]\n"
         "                                                          "
-        "[ COMMANDES DISPONIBLES ]"
+        "\n(L)  VOIR LE TABLEAU DES PRIX VOUS GAGNER À UNE JOUR.\n"
         "                                                          "
-        "(L)  ACCÉDER À LA LISTE DES PRODUITS"
-        "    Consulter l'inventaire complet, les prix et stocks."
+        "\n(N)  CRÉER LE TABLEAU DES VENTES DU JOUR\n"
+        "    Initialiser une nouvelle feuille de calcul pour aujourd'hui.\n"
         "                                                          "
-        "(N)  CRÉER LE TABLEAU DES VENTES DU JOUR"
-        "    Initialiser une nouvelle feuille de calcul pour aujourd'hui."
+        "\n(E) GÉNÉRER LES FICHIERS .CSV\n"
+        "    Extraire les données vers le dossier 'export'.\n"
         "                                                          "
-        "(E) GÉNÉRER LES FICHIERS .CSV"
-        "    Extraire les données vers le dossier 'export'."
-        "                                                          "
-        "──────────────────────────────────────────────────────────" RESET
-        GREEN "   tapez une lettre ou une commande ci-dessous :\n" RESET
+        "\n(Q)  QUITTER\n"
+        "    Sortir du programme.\n"
+        "\n──────────────────────────────────────────────────────────\n" RESET
+        GREEN ">tapez une lettre ou une commande ci-dessous : " RESET
     );
     scanf(" %c",&user_choice);
     if(toupper(user_choice)=='L')
