@@ -9,12 +9,12 @@ int create_and_print_the_list() {
     scanf("%s", json_file);
     
     char command[1024];  // Increase buffer size
-    snprintf(command, sizeof(command), "jq '.' data/%s > data/table_%s.txt", json_file, json_file);   
+    snprintf(command, sizeof(command), "jq '.' data/json_files/%s > data/txt_files/table_%s.txt", json_file, json_file);   
     system(command);
     
     printf("Table created!\n");
     //print it
-    sprintf(command, "jq '.' data/%s", json_file);
+    sprintf(command, "jq '.' data/json_files/%s", json_file);
     system(command);
     menu();
     return 0;

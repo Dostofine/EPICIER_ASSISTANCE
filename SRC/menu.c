@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "list.h"
 #include "clear.h"
+#include "create_csv.h"
 int menu(){
     char user_choice;
     printf(BLUE
@@ -41,11 +42,18 @@ int menu(){
     else if (toupper(user_choice)=='E')
     {
         clear_cmd();
-        printf("good");
+        createcsv();
     }
     else if (toupper(user_choice)=='Q'){
         clear_cmd();
         exit(0);
+    }
+    else{
+        clear_cmd();
+        printf(RED "==============================================\n" RESET);
+        printf(RED "==========un choix invalide!==================\n" RESET);
+        printf(RED "==============================================\n" RESET);
+        menu();
     }
     return 0;
 }

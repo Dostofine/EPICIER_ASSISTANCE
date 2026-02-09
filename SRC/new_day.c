@@ -11,10 +11,10 @@ int hello()
 {
     time_t now;
     time(&now);
-    printf(BLUE "============== %s =================\n" RESET,ctime(&now));
-    printf(RED "==============WELCOME!===============\n" RESET);
-    printf(GREEN "hello in today list i hope you good luck \n" RESET);
-    printf(GREEN "inter the prices and 0 to stop.\n" RESET);
+    printf(BLUE "============== %s =================" RESET,ctime(&now));
+    printf(RED "\n==============WELCOME!===============\n" RESET);
+    printf(GREEN ">hello in today list i hope you good luck \n" RESET);
+    printf(GREEN "inter the prices and 0 to stop.<\n" RESET);
     return 0;
 }
 int inter_new_day(float PRICES[1000])
@@ -23,7 +23,7 @@ int inter_new_day(float PRICES[1000])
     int size;
     size=0;
     for(int i=0;i<1000;i++){
-        printf("enter the price %d : ",i+1);
+        printf(YELLOW "\n >enter the price %d : " RESET,i+1);
         scanf("%f",&PRICES[i]);
         if(PRICES[i]==0){
             break;
@@ -37,7 +37,7 @@ int inter_new_day(float PRICES[1000])
     // Create filename: data_YYYY-MM-DD_HH-MM-SS.json
     char filename[500];
     snprintf(filename, sizeof(filename), 
-            "data/data_%04d-%02d-%02d_%02d-%02d-%02d.json",
+            "data/json_files/data_%04d-%02d-%02d_%02d-%02d-%02d.json",
             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
             t->tm_hour, t->tm_min, t->tm_sec);
 
